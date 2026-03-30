@@ -30,6 +30,8 @@ Yes, my design did change while I was building it. At first, I thought about put
 - Describe one tradeoff your scheduler makes.
 - Why is that tradeoff reasonable for this scenario?
 
+One tradeoff my scheduler makes is only checking for exact time matches (same due_time and due_date) instead of considering task durations for overlapping schedules. This means if two tasks are at 14:00 but one takes 10 minutes and the other 30 minutes, it won't detect a potential overlap at 14:10. This tradeoff is reasonable for this scenario because pet care tasks are often short and discrete, and adding duration-based logic would complicate the code without much benefit for a simple app. It keeps the system lightweight and focused on basic conflicts.
+
 ---
 
 ## 3. AI Collaboration
