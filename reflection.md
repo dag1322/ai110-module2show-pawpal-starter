@@ -7,10 +7,14 @@
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
 
+My initial UML design had four main classes: Owner, Pet, Task, and Scheduler. The Task class represented things like walks, feeding, or meds, and stored info like how long it takes, priority, due time, and whether it’s done. The Pet class represented each pet and kept track of all their tasks. The Owner class represented the user and stored all the pets, plus things like how much time they have in a day. The Scheduler class was basically the “brain” of the app, since it collected all the tasks, sorted them, checked for conflicts, and built a daily plan based on priority and time. Overall, I tried to keep things organized by separating the data (Owner, Pet, Task) from the logic (Scheduler).
+
 **b. Design changes**
 
 - Did your design change during implementation?
 - If yes, describe at least one change and why you made it.
+
+Yes, my design did change while I was building it. At first, I thought about putting all the scheduling logic inside the Owner class, but it got messy really fast and made the class do too much. So I decided to create a separate Scheduler class just for handling the planning part. This made things a lot cleaner because now the Owner just stores pets and info, and the Scheduler handles things like sorting tasks, checking conflicts, and building the plan. This change made the code easier to understand and follow.
 
 ---
 
