@@ -52,8 +52,16 @@ Recurring Tasks- Automatically create next occurrences for daily/weekly tasks wh
 Conflict Detection- Identify scheduling conflicts at the same time, with warnings for global and per-pet overlaps.
 Priority Handling- Tasks are prioritized (high/medium/low) and sorted accordingly in daily plans.
 
+## 📸 Demo
+
+Here is the final Streamlit app interface showing pet management, task input, and schedule generation:
+![alt text](image-1.png)
+
+
 ## Testing PawPal+
 
 The tests cover core behaviors including task completion, pet task management, time-based sorting, recurrence logic for daily/weekly tasks, and conflict detection for overlapping schedules. All tests verify both happy paths (normal operation) and edge cases (like, no tasks, same times).
 
 Confidence Level= (4/5 stars) - All tests pass, so I know the code is pretty reliable for pet scheduling. The system handles sorting, filtering, recurrence, and conflicts without issues.
+
+

@@ -25,6 +25,8 @@ Yes, my design did change while I was building it. At first, I thought about put
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
 - How did you decide which constraints mattered most?
 
+My scheduler considers three main constraints: due time and due date, priority levels (high/medium/low), and task frequency. I decided priority mattered most because pet owners need critical care (feeding, medication) to happen before optional tasks, so the sort_tasks method prioritizes by urgency first. Due date comes second because tasks on the same priority level should be ordered by when they're due. Time-based sorting is available as an alternative view when owners want to see their schedule chronologically instead. Owner available_time was flagged as a constraint but kept simple in this MVP since most pet owners have flexible hours for care tasks. Overall, I weighted the scheduler to focus on getting important tasks scheduled first, then ordering by deadline, trusting the owner to handle time availability manually.
+
 **b. Tradeoffs**
 
 - Describe one tradeoff your scheduler makes.
@@ -38,13 +40,30 @@ One tradeoff my scheduler makes is only checking for exact time matches (same du
 
 **a. How you used AI**
 
-- How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
-- What kinds of prompts or questions were most helpful?
+- I used VS Code Copilot as an interactive coding partner for each phase: UML translation, class skeleton creation, logic implementation, and Streamlit integration.
+- Prompts like "add conflict detection", "sort by HH:MM", "filter tasks by pet" produced actionable code snippets with minimal cognitive load.
 
-**b. Judgment and verification**
+**b. Which Copilot features were most effective?**
 
-- Describe one moment where you did not accept an AI suggestion as-is.
-- How did you evaluate or verify what the AI suggested?
+- Inline suggestions in the editor was very extremely helpful for method body logic (e.g., `sort_by_time` and `filter_tasks`).
+- Chat completions gave structured implementation templates and test ideas.
+- Auto-complete with type hints ensured method signatures matched your design.
+
+**c. One suggestion I rejected or modified**
+
+- Copilot initially suggested doing all scheduling logic inside the Owner class. I rejected that and instead kept Scheduler as the dedicated planning component to preserve single-responsibility design.
+- I also fixed conflict detection logic from the complex interval overlap approach to an specific time warning approach to avoid unnecessary complexity.
+
+**d. Separate chat sessions for phases**
+
+- Separating phases into distinct sessions kept goals focused: phase 1 for UML, phase 2 for core class logic, phase 3 for UI integration and tests.
+- This segmentation avoided context drift and made it easy to review and validate each step independently.
+
+**e. Lead architect reflection**
+
+- Acting as the architect meant evaluating AI suggestions, choosing the clean design, and taking responsibility for final behavior.
+- I learned that the AI provides great code scaffolding, but the human must define constraints, test paths, and tradeoffs.
+- The biggest value is combining AI speed with human judgment to form a robust system.
 
 ---
 
